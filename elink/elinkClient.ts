@@ -1,5 +1,4 @@
-import { lstatSync } from 'node:fs';
-import { config } from './../env';
+import { config } from '../config/env';
 import { APIRequestContext } from '@playwright/test';
 
 const baseUrl = `https://${config.domain}/TCatBox/elink/process.json`;
