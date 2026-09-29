@@ -46,3 +46,18 @@ export async function getDocumentForSign(ticket: string | null, language: string
     
     return context.post(baseUrl, { form });
 }
+
+export async function postSignedDocument(ticket: string | null, language:string | null, refNo: string | null, doc: string | null) {
+    const context = await getProContext();
+
+    const form: Record<string, string> = {
+        function: 'PostSignedDocument',
+    };
+
+    if (ticket !== null) form.ticket = ticket;
+    if (language !== null) form.language = language;
+    if (refNo !== null) form.refNo = refNo;
+    if (doc !== null) form.doc = doc;
+
+    return context.post(baseUrl, {form });
+}
