@@ -200,6 +200,24 @@ test("transactionsCheckForInvalidCcyFormat", async ({ request }) => {
   expect(body.error).toBe("ccy");
 });
 
+test("transactionsCheckForInvalidLanguage", async ({
+  request,
+}) => {
+  const response = await transactions(
+    request,
+    config.ticketActive,
+    CCY,
+    DATE_FROM,
+    DATE_TILL,
+    "XXX",
+    null,
+  );
+  const body = await response.json();
+
+  expect(body.code).toBe(4);
+  expect(body.error).toBe("language");
+});
+
 /* Sandbox behavior: dateFrom/dateTill ordering is not validated.
 An inverted range (dateFrom after dateTill) still returns code 0 and the fixed dataset (not an error).
 */
@@ -224,7 +242,7 @@ test("transactionsCheckForDateRangeValidationNotApplied", async ({
 /* Sandbox behavior: language is not validated against the documented set (EN/RU/LV).
 An unsupported value like LT is accepted (code 0) and returns English text (not rejected or translated).
 */
-test("transactionsCheckForLanguageValidationNotApplied", async ({
+test("transactionsCheckForNotSupportiveLanguage", async ({
   request,
 }) => {
   const response = await transactions(

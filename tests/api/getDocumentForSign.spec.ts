@@ -67,6 +67,18 @@ test("getDocumentForSignCheckForInvalidLanguage", async () => {
   expect(body.error).toBe("language");
 });
 
+test("getDocumentForSignCheckForNotSupportiveLanguage", async () => {
+  const response = await getDocumentForSign(config.ticketActive, "LT", refNo);
+  const body = await response.json();
+
+  expect(body.code).toBe(0);
+  expect(body.signatureRequired).toContain("CER");
+  expect(body.doc).toContain("<RBdocument");
+  expect(body.doc).toContain(refNo);
+  expect(body.status).toBe("20");
+  expect(body.state).toBe("Waiting for signature");
+});
+
 test("getDocumentForSignCheckForInvalidRefNo", async () => {
   const response = await getDocumentForSign(
     config.ticketActive,

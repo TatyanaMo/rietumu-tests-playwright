@@ -77,6 +77,32 @@ test("outgoingPaymentDetailsCheckWithoutLanguage", async ({ request }) => {
   expect(body.error).toBe("");
 });
 
+test("outgoingPaymentDetailsCheckForNotSupportiveLanguage", async ({ request }) => {
+  const response = await outgoingPaymentDetails(
+    request,
+    config.ticketActive,
+    refno,
+    "LT",
+  );
+  const body = await response.json();
+
+  expect(body.code).toBe(0);
+  expect(body.error).toBe("");
+});
+
+test("outgoingPaymentDetailsCheckForInvalidLanguage", async ({ request }) => {
+  const response = await outgoingPaymentDetails(
+    request,
+    config.ticketActive,
+    refno,
+    "XXX",
+  );
+  const body = await response.json();
+
+  expect(body.code).toBe(4);
+  expect(body.error).toBe("language");
+});
+
 test("outgoingPaymentDetailsCheckForMissingTicket", async ({ request }) => {
   const response = await outgoingPaymentDetails(request, null, refno, "EN");
   const body = await response.json();
