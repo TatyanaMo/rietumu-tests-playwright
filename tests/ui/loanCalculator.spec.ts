@@ -176,9 +176,9 @@ test.describe("Loan Calculator", () => {
   });
 
   test("month field does not accept more than 2 characters", async () => {
-    await fundingLatviaPage.setYears(MONTHS_MORE_THAN_MAX_LENGTH);
+    await fundingLatviaPage.setMonths(MONTHS_MORE_THAN_MAX_LENGTH);
 
-    const value = await fundingLatviaPage.getYearsFieldValue();
+    const value = await fundingLatviaPage.getMonthsFieldValue();
     expect(value.length).toBe(EXPECTED_MONTH_MAX_LENGTH);
   });
 });
