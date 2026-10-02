@@ -6,7 +6,7 @@ let refno: string;
 
 const CCY = "EUR";
 const DATE_FROM = "2026-09-01";
-const DATE_TILL = "0226-09-26";
+const DATE_TILL = "2026-09-26";
 
 test.beforeAll(async ({ request }) => {
   const response = await transactions(

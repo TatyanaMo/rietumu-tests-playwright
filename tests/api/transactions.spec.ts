@@ -4,7 +4,7 @@ import { config } from "../../config/env";
 
 const CCY = "EUR";
 const DATE_FROM = "2026-09-01";
-const DATE_TILL = "0226-09-26";
+const DATE_TILL = "2026-09-26";
 test("transactionsCheckAllFieldsForValidRequest", async ({ request }) => {
   const response = await transactions(
     request,
