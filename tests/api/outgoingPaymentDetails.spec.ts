@@ -77,7 +77,9 @@ test("outgoingPaymentDetailsCheckWithoutLanguage", async ({ request }) => {
   expect(body.error).toBe("");
 });
 
-test("outgoingPaymentDetailsCheckForNotSupportiveLanguage", async ({ request }) => {
+test("outgoingPaymentDetailsCheckForNotSupportiveLanguage", async ({
+  request,
+}) => {
   const response = await outgoingPaymentDetails(
     request,
     config.ticketActive,

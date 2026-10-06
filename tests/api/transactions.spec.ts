@@ -200,9 +200,7 @@ test("transactionsCheckForInvalidCcyFormat", async ({ request }) => {
   expect(body.error).toBe("ccy");
 });
 
-test("transactionsCheckForInvalidLanguage", async ({
-  request,
-}) => {
+test("transactionsCheckForInvalidLanguage", async ({ request }) => {
   const response = await transactions(
     request,
     config.ticketActive,
@@ -242,9 +240,7 @@ test("transactionsCheckForDateRangeValidationNotApplied", async ({
 /* Sandbox behavior: language is not validated against the documented set (EN/RU/LV).
 An unsupported value like LT is accepted (code 0) and returns English text (not rejected or translated).
 */
-test("transactionsCheckForNotSupportiveLanguage", async ({
-  request,
-}) => {
+test("transactionsCheckForNotSupportiveLanguage", async ({ request }) => {
   const response = await transactions(
     request,
     config.ticketActive,
