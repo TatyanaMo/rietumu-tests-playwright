@@ -25,7 +25,7 @@ test("transactionsCheckAllFieldsForValidRequest", async ({ request }) => {
   expect.soft(transaction.uniqueID).toBeTruthy();
   expect.soft(transaction.trnID).toBeTruthy();
   expect
-    .soft(() => new Date(transaction.date).toString())
+    .soft(new Date(transaction.date).toString())
     .not.toBe("Invalid Date");
   expect.soft(transaction.refno).toBeTruthy();
   expect.soft(transaction.narrative).not.toBeNull();

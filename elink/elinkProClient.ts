@@ -1,9 +1,8 @@
-import { isContext } from "node:vm";
-import { config } from "../config/env";
 import {
-  request as playwrightRequest,
   APIRequestContext,
+  request as playwrightRequest,
 } from "@playwright/test";
+import { config } from "../config/env";
 
 const baseUrl = `https://${config.domainPro}/TCatBox/elinkpro/Process`;
 
